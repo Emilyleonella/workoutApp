@@ -1,0 +1,34 @@
+<div class="workouts">
+  <input
+  class="workout-input"
+  type="text"
+  name="addWorkout"
+  placeholder="Workout Name ..."
+  [(ngModel)]="inputAddWorkout"/>
+  <input 
+  class="workout-input"
+  min="1"
+ type="number"
+ name="sets"
+ placeholder="Sets ..."
+ [(ngModel)]="inputSets"
+  >
+  <input 
+  class="workout-input"
+  min="1"
+  type="number"
+  name="reps"
+  placeholder="Reps ..."
+  [(ngModel)]="inputReps"
+   >
+  <input type="submit" value="Add Workout" class="workout-submit" (click)="addworkout()">
+  <div
+    *ngFor="let workout of workouts; let i = index"
+    class="workout {{ workout.completed ? 'done' : '' }}"
+  >
+    <div class="content" (click)="toggleDone(i)">{{ workout.content }}</div>
+    <div class="sets">{{ workout.sets}}</div>
+    <div class="reps"> {{workout.reps}}</div>
+    <button class="delete" (click)="deleteWorkout(i)">Remove</button>
+  </div>
+</div>
